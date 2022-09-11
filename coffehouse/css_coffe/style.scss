@@ -1,0 +1,361 @@
+//перменные
+@import "nullstyle.scss";
+//colour
+$fztitle: 36px;
+$cl: #000000;
+$clw: #ffffff;
+$clbr: #817070;
+$clgr: #efefef;
+//mixins
+%ST {
+   font-style: normal;
+   font-weight: 500;
+   font-size: 36px;
+   line-height: 53px;
+}
+%PT {
+   font-style: normal;
+   font-weight: 300;
+   font-size: 20px;
+   line-height: 30px;
+}
+//code
+body {
+   color: $cl;
+   font-family: "Oswald";
+}
+.title-page {
+   @extend %ST;
+}
+.header {
+   height: 110px;
+   &__body {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+   }
+   &__logo {
+   }
+   &__burger {
+   }
+   &__menu {
+   }
+   &__list {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+   }
+   & li:not(:last-child) {
+      padding: 0 46px 0 0;
+   }
+   & li:last-child {
+      padding: 0 10px 0 0;
+   }
+   &__link {
+      font-style: normal;
+      font-weight: 300;
+      font-size: 24px;
+      line-height: 36px;
+      color: $cl;
+   }
+}
+.container {
+   max-width: 1280px;
+   margin: 0 auto;
+}
+@media (max-width: 767px) {
+   body.lock {
+      overflow: hidden;
+   }
+   .header {
+      & li:not(:last-child) {
+         padding: 0;
+      }
+   }
+   .header__burger {
+      display: block;
+      position: relative;
+      width: 30px;
+      height: 20px;
+      z-index: 3;
+      margin: 0 15px 0 0;
+      z-index: 51;
+      & span {
+         background-color: $cl;
+         position: absolute;
+         left: 0;
+         width: 100%;
+         height: 2px;
+         top: 9px;
+         transition: all 0.3s ease 0s;
+      }
+      &:before {
+         content: "";
+         background-color: $cl;
+         position: absolute;
+         width: 100%;
+         height: 2px;
+         left: 0;
+         top: 0;
+         transition: all 0.3s ease 0s;
+      }
+      &:after {
+         content: "";
+         background-color: $cl;
+         position: absolute;
+         width: 100%;
+         height: 2px;
+         left: 0;
+         bottom: 0;
+         transition: all 0.3s ease 0s;
+      }
+      &.active:before {
+         transform: rotate(45deg);
+         top: 9px;
+      }
+      &.active:after {
+         transform: rotate(-45deg);
+         bottom: 9px;
+      }
+      &.active span {
+         transform: scale(0);
+      }
+   }
+   .header__menu {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: fixed;
+      top: -100%;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: gray;
+      padding: 100px 0 0 0;
+      transition: all 0.3s ease 0s;
+      z-index: 50;
+      &.active {
+         top: 0;
+      }
+   }
+   .header__list {
+      display: block;
+      text-align: center;
+   }
+   .header__list li {
+      margin: 0 0 50px 0;
+      display: block;
+      padding: 0;
+   }
+   .header__link {
+      font-size: 30px;
+   }
+}
+//main
+.page-hi {
+   position: relative;
+   display: flex;
+   flex-direction: column;
+   background: url(../img_coffe/image\ 1.png);
+   height: 100vh;
+   background-size: cover;
+   background-position: center;
+   justify-content: center;
+   align-items: center;
+   &__content {
+   }
+   &__title {
+      position: relative;
+      z-index: 3;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-style: normal;
+      font-weight: 700;
+      font-size: 60px;
+      line-height: 89px;
+      color: $clw;
+   }
+   &__decoration {
+      width: 80px;
+      height: 10px;
+      background: $clbr;
+      padding: 7px 0 0 0;
+   }
+}
+@media (max-width: 767px) {
+   .page-hi {
+      &__content {
+         display: flex;
+         flex-direction: column;
+         align-items: center;
+         text-align: center;
+      }
+   }
+}
+//story
+.page-story {
+   &__title {
+      text-align: center;
+      padding: 0 0 60px 0;
+   }
+   &__content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+   }
+
+   &__body {
+      padding: 0 0 0 40px;
+   }
+}
+
+.text-page {
+   @extend %PT;
+}
+@media (max-width: 960px) {
+   .page-story {
+      &__content {
+         flex-direction: column-reverse;
+      }
+      &__image {
+         padding: 10px 10px;
+      }
+      &__image img {
+         width: 100%;
+      }
+      &__body {
+         padding: 0 10px 0 10px;
+      }
+   }
+}
+//
+.page-blog {
+   background-color: $clgr;
+   &__title {
+      text-align: center;
+   }
+
+   &__content {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      padding: 0 10px 0 10px;
+   }
+   &__card {
+      display: flex;
+      flex-direction: column;
+      background-color: $clw;
+   }
+}
+
+.card {
+   min-width: 365px;
+   max-width: 365px;
+   padding: 20px 20px 46px 20px;
+   margin: 0 10px 0 0;
+   &__title {
+      font-style: normal;
+      font-weight: 400;
+      font-size: 24px;
+      line-height: 36px;
+   }
+   &__image img {
+      width: 100%;
+   }
+   &__text {
+   }
+}
+@media (max-width: 768px) {
+   .page-blog {
+      &__content {
+         display: flex;
+         flex-direction: column;
+         align-items: center;
+         flex-wrap: wrap;
+         padding: 0 0 0 0;
+      }
+   }
+   .card:not(:last-child) {
+      margin: 0 0 20px 0;
+   }
+   .card {
+      margin: 0 10px 0 10px;
+   }
+}
+//subscribe
+.page-subscribe {
+   background-color: $clbr;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   padding: 60px 0 58px 0;
+}
+.page-subscribe__title {
+   color: $clw;
+   text-align: center;
+}
+.title-page {
+}
+.page-subscribe__button {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   width: 300px;
+   height: 55px;
+   background: $clbr;
+   border: 3px solid $clw;
+   margin: 28px 0 28px 0;
+   &:hover {
+      background: $clw;
+      border: 3px solid $clw;
+      .page-subscribe__button-text {
+         color: $cl;
+      }
+   }
+}
+.page-subscribe__button-text {
+   font-style: normal;
+   font-weight: 300;
+   font-size: 20px;
+   line-height: 30px;
+   color: $clw;
+}
+.page-subscribe__submit {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   width: 129px;
+   height: 55px;
+   background: $clw;
+   border: 3px solid $clw;
+   &:hover {
+      background: $clbr;
+      border: 3px solid $clw;
+      .page-subscribe__submit-text {
+         color: $clw;
+      }
+   }
+}
+.page-subscribe__submit-text {
+   font-weight: 500;
+   font-size: 20px;
+   line-height: 30px;
+   color: $clbr;
+}
+//footer
+.footer {
+   height: 72px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   &__copywriter {
+      text-align: center;
+      font-weight: 300;
+      font-size: 20px;
+      line-height: 30px;
+      text-align: center;
+      text-transform: uppercase;
+   }
+}
